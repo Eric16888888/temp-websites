@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandike Coffee — Premium Espresso Machines, Ottawa Canada</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #2A1810;
+  background: #FAF6F0;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
+
+:root {
+  --espresso: #2A1810;
+  --cream: #F5EBDD;
+  --cream-light: #FAF6F0;
+  --maple-red: #C8102E;
+  --gold: #B8860B;
+  --text: #1A0F0A;
+  --text-muted: #6B5848;
+  --border: #E0D5C5;
+  --white: #FFFFFF;
+}
+
+/* ===== Navigation ===== */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250, 246, 240, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-size: 1.3rem; font-weight: 700; letter-spacing: 0.03em;
+  color: var(--espresso);
+  font-family: Georgia, serif;
+}
+.nav-logo span { color: var(--maple-red); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.88rem; font-weight: 500;
+  color: var(--text-muted); transition: color 0.2s;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.02em;
+}
+.nav-links a:hover { color: var(--espresso); }
+.nav-cta {
+  background: var(--espresso); color: var(--cream-light);
+  padding: 0.6rem 1.5rem; border-radius: 2px; border: none;
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #3D2817; }
+
+/* ===== Hero ===== */
+.hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 85vh; align-items: center;
+  padding: 4rem 6rem; gap: 4rem;
+  background: linear-gradient(135deg, var(--cream-light) 0%, var(--cream) 100%);
+}
+.hero-content h1 {
+  font-size: 3.2rem; line-height: 1.15;
+  font-weight: 700; color: var(--espresso);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+.hero-content h1 em { font-style: italic; color: var(--maple-red); }
+.hero-content p.lead {
+  font-size: 1.12rem; color: var(--text-muted);
+  margin-bottom: 2rem; max-width: 500px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.7;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--white); border: 1px solid var(--border);
+  padding: 0.4rem 1rem; border-radius: 2px;
+  font-size: 0.78rem; font-weight: 600;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--gold); margin-bottom: 1.5rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.hero-badge::before { content: ""; width: 8px; height: 8px; background: var(--maple-red); border-radius: 50%; }
+.hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--maple-red); color: var(--white);
+  padding: 1rem 2.5rem; border: none; border-radius: 2px;
+  font-size: 0.95rem; font-weight: 600;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.03em; transition: background 0.2s;
+}
+.btn-primary:hover { background: #A00D25; }
+.btn-secondary {
+  background: transparent; color: var(--espresso);
+  padding: 1rem 2rem; border: 1px solid var(--espresso); border-radius: 2px;
+  font-size: 0.95rem; font-weight: 500;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--espresso); color: var(--cream-light); }
+.hero-price {
+  margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.hero-price strong { color: var(--espresso); font-size: 1.3rem; }
+.hero-image { position: relative; display: flex; justify-content: center; align-items: center; }
+.hero-image img {
+  max-height: 520px; width: auto;
+  border-radius: 4px;
+  box-shadow: 0 25px 60px rgba(42, 24, 16, 0.15);
+}
+.hero-image .deco-circle {
+  position: absolute; width: 380px; height: 380px;
+  border: 1px solid var(--border); border-radius: 50%;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* ===== Stats Bar ===== */
+.stats-bar {
+  background: var(--espresso); color: var(--cream-light);
+  padding: 2rem 6rem;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  text-align: center;
+}
+.stat-item .stat-num {
+  font-size: 2rem; font-weight: 700; color: var(--gold);
+  line-height: 1; margin-bottom: 0.3rem;
+}
+.stat-item .stat-label {
+  font-size: 0.78rem; opacity: 0.8;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+
+/* ===== About / Mission ===== */
+.about {
+  padding: 5rem 6rem; background: var(--cream-light);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  align-items: center;
+}
+.about-content .eyebrow {
+  font-size: 0.8rem; font-weight: 600; color: var(--maple-red);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 0.8rem;
+}
+.about-content h2 {
+  font-size: 2.2rem; color: var(--espresso);
+  font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2;
+}
+.about-content p {
+  color: var(--text-muted); margin-bottom: 1.2rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.75;
+}
+.about-content p strong { color: var(--espresso); }
+.about-image {
+  border-radius: 4px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(42, 24, 16, 0.12);
+}
+.about-image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== Features ===== */
+.features { padding: 5rem 6rem; background: var(--cream); }
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+.section-header .eyebrow {
+  font-size: 0.8rem; font-weight: 600; color: var(--maple-red);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 0.8rem;
+}
+.section-header h2 {
+  font-size: 2.2rem; color: var(--espresso);
+  font-weight: 700; letter-spacing: -0.01em;
+}
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.feature-card {
+  background: var(--white); border: 1px solid var(--border);
+  padding: 2.2rem 1.8rem; border-radius: 4px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(42, 24, 16, 0.08);
+}
+.feature-icon {
+  width: 48px; height: 48px; background: var(--cream);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem; font-size: 1.3rem;
+}
+.feature-card h3 {
+  font-size: 1.1rem; color: var(--espresso);
+  margin-bottom: 0.6rem; font-weight: 600;
+}
+.feature-card p {
+  font-size: 0.9rem; color: var(--text-muted);
+  font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6;
+}
+
+/* ===== Product Showcase ===== */
+.product-showcase {
+  padding: 5rem 6rem; background: var(--cream-light);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  align-items: center;
+}
+.product-showcase .image-wrap {
+  border-radius: 4px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(42, 24, 16, 0.12);
+}
+.product-showcase .image-wrap img { width: 100%; height: auto; object-fit: cover; }
+.product-info h2 {
+  font-size: 2rem; color: var(--espresso);
+  margin-bottom: 1rem; font-weight: 700;
+}
+.product-info .product-tag {
+  display: inline-block; background: var(--maple-red); color: white;
+  padding: 0.3rem 0.8rem; font-size: 0.72rem; font-weight: 600;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.08em; margin-bottom: 1rem; text-transform: uppercase;
+}
+.product-info p {
+  color: var(--text-muted); margin-bottom: 1.5rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.7;
+}
+.spec-list { list-style: none; margin-bottom: 2rem; }
+.spec-list li {
+  padding: 0.7rem 0; border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem;
+}
+.spec-list li span:first-child { color: var(--text-muted); }
+.spec-list li span:last-child { color: var(--espresso); font-weight: 500; }
+
+/* ===== Testimonials ===== */
+.testimonials { padding: 5rem 6rem; background: var(--cream); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.testimonial-card {
+  background: var(--white); border: 1px solid var(--border);
+  padding: 2rem; border-radius: 4px;
+}
+.testimonial-card .avatar-row {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
+}
+.testimonial-card .avatar {
+  width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
+}
+.testimonial-card .name { font-weight: 600; color: var(--espresso); font-size: 0.95rem; }
+.testimonial-card .location {
+  font-size: 0.78rem; color: var(--text-muted);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.testimonial-card .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.8rem; }
+.testimonial-card p.quote {
+  font-size: 0.9rem; color: var(--text-muted);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.65; font-style: italic;
+}
+
+/* ===== Blog ===== */
+.blog { padding: 5rem 6rem; background: var(--cream-light); }
+.blog-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem;
+}
+.blog-card {
+  background: var(--white); border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(42, 24, 16, 0.08);
+}
+.blog-card .blog-img { height: 220px; overflow: hidden; }
+.blog-card .blog-img img { width: 100%; height: 100%; object-fit: cover; }
+.blog-card .blog-body { padding: 1.8rem; }
+.blog-card .blog-date {
+  font-size: 0.78rem; color: var(--gold); font-weight: 600;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.05em; margin-bottom: 0.6rem; text-transform: uppercase;
+}
+.blog-card h3 {
+  font-size: 1.15rem; color: var(--espresso);
+  margin-bottom: 0.8rem; font-weight: 600; line-height: 1.3;
+}
+.blog-card p.excerpt {
+  font-size: 0.88rem; color: var(--text-muted);
+  font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6;
+}
+
+/* ===== Trust Badges ===== */
+.trust {
+  padding: 4rem 6rem; background: var(--espresso); color: var(--cream-light);
+}
+.trust-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;
+}
+.trust-item { padding: 1rem; }
+.trust-item .trust-icon {
+  width: 56px; height: 56px; margin: 0 auto 1rem;
+  background: rgba(245, 235, 221, 0.1); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; color: var(--gold);
+}
+.trust-item h4 { font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600; }
+.trust-item p {
+  font-size: 0.82rem; opacity: 0.75;
+  font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.5;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  padding: 5rem 6rem; text-align: center; background: var(--cream);
+}
+.cta-section h2 {
+  font-size: 2.2rem; color: var(--espresso);
+  margin-bottom: 1rem; font-weight: 700;
+}
+.cta-section p {
+  color: var(--text-muted); max-width: 500px; margin: 0 auto 2rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: var(--espresso); color: rgba(245, 235, 221, 0.7);
+  padding: 3rem 6rem 2rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+.footer-brand .footer-logo {
+  font-size: 1.25rem; font-weight: 700; color: var(--cream-light);
+  margin-bottom: 0.8rem; font-family: Georgia, serif;
+}
+.footer-brand .footer-logo span { color: var(--maple-red); }
+.footer-brand p { line-height: 1.6; max-width: 280px; }
+.footer-col h5 {
+  color: var(--cream-light); font-size: 0.82rem;
+  margin-bottom: 1rem; letter-spacing: 0.08em;
+  text-transform: uppercase; font-weight: 600;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.5rem; }
+.footer-col ul li a { transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--cream-light); }
+.footer-bottom {
+  border-top: 1px solid rgba(245, 235, 221, 0.15);
+  padding-top: 1.5rem; display: flex;
+  justify-content: space-between; align-items: center;
+  font-size: 0.78rem; opacity: 0.6;
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+  background: var(--espresso); color: var(--cream-light);
+  padding: 0.8rem 2rem; border-radius: 4px; font-size: 0.9rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  opacity: 0; transition: all 0.3s; z-index: 1000;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ===== Product Lineup ===== */
+.lineup { padding: 5rem 6rem; background: var(--cream-light); }
+.lineup-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+}
+.lineup-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 4px; overflow: hidden; cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.lineup-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(42, 24, 16, 0.1);
+}
+.lineup-img {
+  height: 220px; background: #FAFAFA;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+}
+.lineup-img img { max-height: 100%; max-width: 100%; object-fit: contain; }
+.lineup-body { padding: 1.2rem 1.3rem; }
+.lineup-tag {
+  display: inline-block; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--maple-red); margin-bottom: 0.5rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.lineup-body h3 {
+  font-size: 0.95rem; color: var(--espresso);
+  margin-bottom: 0.5rem; font-weight: 600; line-height: 1.3;
+}
+.lineup-body p {
+  font-size: 0.82rem; color: var(--text-muted);
+  font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+.lineup-price {
+  font-size: 1.05rem; font-weight: 700; color: var(--espresso);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; padding: 3rem 2rem; gap: 2rem; text-align: center; }
+  .hero-content h1 { font-size: 2.4rem; }
+  .hero-content p.lead { margin: 0 auto 2rem; }
+  .hero-actions { justify-content: center; }
+  .stats-bar, .trust-grid { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
+  .features, .product-showcase, .testimonials, .blog, .cta-section, .about, .lineup { padding: 3rem 2rem; }
+  .features-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .lineup-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-showcase, .about { grid-template-columns: 1fr; gap: 2rem; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+}
+@media (max-width: 640px) {
+  .hero-content h1 { font-size: 1.8rem; }
+  .features-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .lineup-grid { grid-template-columns: 1fr; }
+  .stats-bar, .trust-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-logo">Mandike<span>.</span> Coffee</div>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#product">The Machine</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#blog">Learn</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showToast('Added to cart — free shipping across Canada!')">Shop Now</button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Ottawa, Canada</div>
+    <h1>Bring café-quality espresso<br><em>home to every kitchen.</em></h1>
+    <p class="lead">
+      Mandike Coffee designs and builds premium home espresso machines in Ottawa, Ontario. 
+      We're on a mission to bring the ritual of true espresso to North American kitchens — 
+      one cup at a time.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="showToast('Redirecting to checkout...')">Buy Now — $899 CAD</button>
+      <button class="btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Our Story</button>
+    </div>
+    <div class="hero-price">
+      <strong>$899</strong> CAD &nbsp;·&nbsp; Free shipping nationwide &nbsp;·&nbsp; 2-year warranty
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="deco-circle"></div>
+    <img src="assets/hero-machine.jpg" alt="Mandike Pro Espresso Machine in cream finish">
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">11%</div>
+    <div class="stat-label">North American homes with espresso</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">54%</div>
+    <div class="stat-label">Drip machines still dominate</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">46%</div>
+    <div class="stat-label">Adults drinking specialty coffee daily</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4.9/5</div>
+    <div class="stat-label">Mandike owner rating</div>
+  </div>
+</section>
+
+<!-- About / Our Story -->
+<section class="about" id="about">
+  <div class="about-content">
+    <div class="eyebrow">Our Story</div>
+    <h2>Changing how North America<br>brews at home.</h2>
+    <p>
+      Walk into any Canadian or American kitchen and you'll find a drip coffee maker. 
+      It's been the default for decades — simple, convenient, and familiar. But here's 
+      the problem: drip coffee has never been the full story of what coffee can be.
+    </p>
+    <p>
+      <strong>Mandike Coffee was founded in Ottawa</strong> with a simple belief: every home deserves 
+      the richness, the crema, the ritual of a real espresso. North America has been 
+      sleeping on espresso at home — and we're here to wake it up.
+    </p>
+    <p>
+      The numbers tell the story. Drip machines still make up over half of all home 
+      coffee appliances in North America. Only about 11% of daily coffee drinkers use 
+      an espresso machine at home. Yet specialty coffee consumption has hit a 14-year 
+      high — people are falling in love with better coffee when they go out. They just 
+      haven't been able to bring it home.
+    </p>
+    <p>
+      We're changing that. Our machines are designed for Canadian kitchens — 
+      easy enough for weekday mornings, precise enough for weekend experimentation. 
+      From our roastery-neighbourhood workshop in Ottawa, we build machines that 
+      make espresso approachable, not intimidating.
+    </p>
+    <p style="margin-top: 1.5rem; font-style: italic; color: var(--espresso);">
+      — The Mandike Team, Ottawa, Ontario
+    </p>
+  </div>
+  <div class="about-image">
+    <img src="assets/barista.jpg" alt="Barista pulling an espresso shot">
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+  <div class="section-header">
+    <div class="eyebrow">Why Mandike</div>
+    <h2>Built for real home brewing</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>15-Bar Italian Pump</h3>
+      <p>Commercial-grade extraction pressure pulls rich, golden crema every time — the foundation of a true espresso shot.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌡️</div>
+      <h3>Precision ±1°C Control</h3>
+      <p>Stable temperature means consistent extraction, regardless of your kitchen's ambient conditions — even Canadian winters.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💨</div>
+      <h3>Professional Steam Wand</h3>
+      <p>Thermocoil system microfoams milk to silky perfection — lattes, cappuccinos, and flat whites made easy.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⏱️</div>
+      <h3>3-Minute Warm-Up</h3>
+      <p>Rapid heat technology means no waiting. From counter to crema in under three minutes — even on busy weekday mornings.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔇</div>
+      <h3>Whisper-Quiet Under 65dB</h3>
+      <p>Insulated vibration-dampening housing keeps operation quiet enough for early mornings without waking the house.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🇨🇦</div>
+      <h3>Ottawa-Built Support</h3>
+      <p>Canadian-based customer service and a 2-year warranty. We're a real company in a real city, and we stand behind our machines.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Product Showcase -->
+<section class="product-showcase" id="product">
+  <div class="image-wrap">
+    <img src="assets/product-machine.jpg" alt="Mandike Pro Series X1 Espresso Machine">
+  </div>
+  <div class="product-info">
+    <div class="product-tag">Flagship Model</div>
+    <h2>The Pro Series X1</h2>
+    <p>
+      Our flagship home espresso machine combines commercial-grade internals with a 
+      timeless cream-and-chrome exterior. Designed in Ottawa, built for Canadian homes.
+    </p>
+    <ul class="spec-list">
+      <li><span>Pressure Pump</span><span>15-bar ULKA Italian pump</span></li>
+      <li><span>Boiler System</span><span>Dual stainless steel boilers</span></li>
+      <li><span>Power</span><span>1450W · 120V (Canada standard)</span></li>
+      <li><span>Water Tank</span><span>2.5L removable reservoir</span></li>
+      <li><span>Dimensions</span><span>32 × 28 × 38 cm</span></li>
+      <li><span>Weight</span><span>11.5 kg</span></li>
+      <li><span>Finish</span><span>Cream enamel + chrome accents</span></li>
+    </ul>
+    <button class="btn-primary" onclick="showToast('Added to cart — free shipping!')">Add to Cart — $899 CAD</button>
+  </div>
+</section>
+
+<!-- Product Lineup -->
+<section class="lineup" id="lineup">
+  <div class="section-header">
+    <div class="eyebrow">Our Collection</div>
+    <h2>Four machines, one obsession</h2>
+  </div>
+  <div class="lineup-grid">
+    <div class="lineup-card" onclick="showToast('Viewing Pro Series X1...')">
+      <div class="lineup-img">
+        <img src="assets/lineup-walnut.jpg" alt="MDK Pro Series X1 Walnut Cream">
+      </div>
+      <div class="lineup-body">
+        <div class="lineup-tag">Best Seller</div>
+        <h3>Pro Series X1 — Walnut Cream</h3>
+        <p>Walnut wood accents, cream enamel body, wooden portafilter handle. Our flagship home model.</p>
+        <div class="lineup-price">$899 CAD</div>
+      </div>
+    </div>
+    <div class="lineup-card" onclick="showToast('Viewing Pro Series X1 Oak...')">
+      <div class="lineup-img">
+        <img src="assets/lineup-oak.jpg" alt="MDK Pro Series X1 Oak Cream">
+      </div>
+      <div class="lineup-body">
+        <div class="lineup-tag">New</div>
+        <h3>Pro Series X1 — Oak Cream</h3>
+        <p>Light oak wood side panels, digital PID display, dual gauge. Same performance, lighter finish.</p>
+        <div class="lineup-price">$899 CAD</div>
+      </div>
+    </div>
+    <div class="lineup-card" onclick="showToast('Viewing Pro Series Black...')">
+      <div class="lineup-img">
+        <img src="assets/model-pro-black.jpg" alt="MDK Pro Series Black">
+      </div>
+      <div class="lineup-body">
+        <div class="lineup-tag">Commercial Grade</div>
+        <h3>Pro Series Black</h3>
+        <p>All-black stainless steel, dual boiler system, commercial-grade group head. For serious enthusiasts.</p>
+        <div class="lineup-price">$1,299 CAD</div>
+      </div>
+    </div>
+    <div class="lineup-card" onclick="showToast('Viewing Studio Series...')">
+      <div class="lineup-img">
+        <img src="assets/model-stainless.jpg" alt="MDK Studio Series Stainless">
+      </div>
+      <div class="lineup-body">
+        <div class="lineup-tag">Minimalist</div>
+        <h3>Studio Series Stainless</h3>
+        <p>Brushed stainless steel, walnut top handles, ultra-sleek design. A statement piece for modern kitchens.</p>
+        <div class="lineup-price">$1,099 CAD</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header">
+    <div class="eyebrow">Customer Reviews</div>
+    <h2>Loved by coffee lovers across Canada</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="avatar-row">
+        <img class="avatar" src="assets/testimonial1.jpg" alt="">
+        <div>
+          <div class="name">Sophie L.</div>
+          <div class="location">Toronto, ON</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Coming from a drip maker, this was a game-changer. I was pulling perfect shots on day one. My daily routine has completely changed."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="avatar-row">
+        <img class="avatar" src="assets/testimonial2.jpg" alt="">
+        <div>
+          <div class="name">Marcus W.</div>
+          <div class="location">Vancouver, BC</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="quote">"The crema is as good as any café in Vancouver. Rich, smooth, and consistent. My old drip machine is in storage now."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="avatar-row">
+        <img class="avatar" src="assets/testimonial3.jpg" alt="">
+        <div>
+          <div class="name">Jennifer T.</div>
+          <div class="location">Montreal, QC</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Beautiful design — it looks like a vintage appliance on my counter. Guests always ask where I got it. Performance matches the looks."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="avatar-row">
+        <img class="avatar" src="assets/testimonial4.jpg" alt="">
+        <div>
+          <div class="name">David K.</div>
+          <div class="location">Calgary, AB</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Fast enough for my morning rush. 3 minutes from plug-in to first sip. The steam wand works perfectly for my morning cappuccino."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="avatar-row">
+        <img class="avatar" src="assets/barista.jpg" alt="">
+        <div>
+          <div class="name">Rachel M.</div>
+          <div class="location">Ottawa, ON</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="quote">"As an Ottawan, I love supporting a local company. The machine makes every style my family loves — espresso, americano, latte."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="avatar-row">
+        <img class="avatar" src="assets/barista.jpg" alt="">
+        <div>
+          <div class="name">James P.</div>
+          <div class="location">Halifax, NS</div>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Built like a tank. Two years in, zero issues. The Canadian support team actually picks up the phone — rare these days."</p>
+    </div>
+  </div>
+</section>
+
+<!-- Blog -->
+<section class="blog" id="blog">
+  <div class="section-header">
+    <div class="eyebrow">Coffee Knowledge</div>
+    <h2>Learn the craft</h2>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card" onclick="showToast('Opening article...')">
+      <div class="blog-img">
+        <img src="assets/latte-art.jpg" alt="Beautiful latte art">
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">November 5, 2026</div>
+        <h3>How to Make Café-Quality Espresso at Home</h3>
+        <p class="excerpt">
+          Drip coffee has been the North American default for decades. But switching to 
+          home espresso doesn't have to be intimidating. From bean selection to grind size 
+          to extraction time — a complete beginner's guide.
+        </p>
+      </div>
+    </div>
+    <div class="blog-card" onclick="showToast('Opening article...')">
+      <div class="blog-img">
+        <img src="assets/product-machine.jpg" alt="Espresso machine on counter">
+      </div>
+      <div class="blog-body">
+        <div class="blog-date">November 3, 2026</div>
+        <h3>Drip vs. Espresso: Why We're Making the Switch</h3>
+        <p class="excerpt">
+          North America drinks more drip coffee than anywhere else in the world. But the 
+          specialty coffee movement is changing that. Here's why home espresso is the next 
+          big shift — and how easy it actually is to get started.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust -->
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="trust-icon">🚚</div>
+      <h4>Free Canada-Wide Shipping</h4>
+      <p>All orders shipped free across Canada. Delivery in 2–5 business days via Canada Post or UPS.</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">↩️</div>
+      <h4>30-Day Returns</h4>
+      <p>Not in love? Return it within 30 days for a full refund. No questions asked.</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🛡️</div>
+      <h4>2-Year Warranty</h4>
+      <p>Every Mandike machine is covered by a full 2-year warranty — Ottawa-based service and support.</p>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔒</div>
+      <h4>Secure Payment</h4>
+      <p>All transactions are encrypted and PCI-DSS compliant. Your payment data stays safe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to upgrade your mornings?</h2>
+  <p>Join thousands of Canadians who've made the switch from drip to real espresso. Free shipping, 30-day returns, and a 2-year warranty — risk-free.</p>
+  <button class="btn-primary" onclick="showToast('Redirecting to checkout...')">Get Yours — $899 CAD</button>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Mandike<span>.</span> Coffee</div>
+      <p>
+        Founded in Ottawa, Canada. We exist to bring the ritual and richness of true 
+        espresso to North American homes — one cup at a time.
+      </p>
+      <p style="margin-top: 1.2rem; font-size: 0.82rem; opacity: 0.8;">
+        76 Serenade Cres<br>
+        Ottawa, ON K1X 0B9<br>
+        Canada
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; opacity: 0.8;">
+        <a href="tel:+16478661682" style="color: var(--gold);">+1 (647) 866-1682</a>
+      </p>
+    </div>
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="#" onclick="showToast('Coming soon'); return false;">Pro Series X1</a></li>
+        <li><a href="#" onclick="showToast('Coming soon'); return false;">Accessories</a></li>
+        <li><a href="#" onclick="showToast('Coming soon'); return false;">Beans & Gear</a></li>
+        <li><a href="#" onclick="showToast('Coming soon'); return false;">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="tel:+16478661682" onclick="showToast('Call us at +1 (647) 866-1682'); return false;">Contact Us</a></li>
+        <li><a href="#" onclick="showToast('Opening FAQ...'); return false;">FAQ</a></li>
+        <li><a href="#" onclick="showToast('Opening warranty...'); return false;">Warranty</a></li>
+        <li><a href="#" onclick="showToast('Opening shipping...'); return false;">Shipping & Returns</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about" onclick="showToast('Our story...'); return false;">About Us</a></li>
+        <li><a href="#" onclick="showToast('Careers...'); return false;">Careers</a></li>
+        <li><a href="#" onclick="showToast('Press...'); return false;">Press</a></li>
+        <li><a href="#" onclick="showToast('Blog...'); return false;">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Mandike Coffee Inc. · 76 Serenade Cres, Ottawa, ON K1X 0B9, Canada · +1 (647) 866-1682</div>
+    <div>Canadian Corporation · BN: 123456789RC0001</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+}
+</script>
+
+</body>
+</html>
